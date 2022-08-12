@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="productentry" method="post">
+        {% csrf_token %}
+    <input type="text" name="productname" placeholder="product name"><br>
+    <input type="text" name="productprice" placeholder="product price"><br>
+    <input type="text" name="productdescription" placeholder="product description"><br>
+    <input type="text" name="productsize" placeholder="product size"><br>
+    <input type="file" id="img" name="productimage" accept="image/*"><br>
+    <input type="submit">
+    </form>
+    
+</body>
+</html>
+
+
+<body bgcolor="green">
+    {% for dest in dests %}
+    <div class="col-12">
+        
+        <img src="/media/{{dest.productimage}}" alt="">
+        
+        <div class="destination_title"><a>{{dest.productname}}</a></div>
+		<div class="destination_subtitle"><p>{{dest.productdesc}}</p></div>
+		<div class="destination_price">From ${{dest.productprice}}</div>
+    </div>
+    {% endfor %}
+</body>
